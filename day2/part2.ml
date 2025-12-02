@@ -22,6 +22,7 @@ let counter = ref 0;;
 
 let little_regex_that_could = Str.regexp "^\\(\\([0-9]+\\)\\2+\\)$";; (*I spent about 2 minutes writing this regex, and about 2 hours getting it to compile/figuring out what library to use in ocaml*)
  
+(*this can probably be done entirely functionally but I got work in the morning*)
 let f (elem) =
     (for i = (List.hd elem) to (List.nth elem 1) do 
       if Str.string_match little_regex_that_could (string_of_int i) 0 then (counter := !counter + i) else ();
